@@ -14,5 +14,10 @@ public class JavaBean6 {
 	private int age;
 	
 	
-	
 }
+
+
+
+
+
+

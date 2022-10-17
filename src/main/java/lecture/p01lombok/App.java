@@ -2,7 +2,7 @@ package lecture.p01lombok;
 
 public class App {
 	public static void main(String[] args) {
-		System.out.println("메인 메소드");
+		System.out.println("메인 메소드1");
 		
 		JavaBean1 j1 = new JavaBean1();
 		j1.setName("jisung");
@@ -22,9 +22,22 @@ public class App {
 		String location2 = j2.getLocation();
 		
 		JavaBean4 j4 = new JavaBean4();
-		j4.setAddress("lorea");
+		j4.setAddress("korea");
 		j4.setScore(500);
 		
 		System.out.println(j4.toString());
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
