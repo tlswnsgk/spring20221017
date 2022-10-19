@@ -33,6 +33,10 @@ public class Controller04 {
 		System.out.println("method55");
 	}
 		
+	@RequestMapping(value = "sub05",method = {RequestMethod.GET,RequestMethod.POST})
+	public void method6() {
+		System.out.println("method66");
+	}
 	}
 	
 
