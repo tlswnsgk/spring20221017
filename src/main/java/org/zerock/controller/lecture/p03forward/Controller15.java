@@ -34,7 +34,7 @@ public class Controller15 {
 		return null;
 	}
 	// sub05 name request param이 있으면 /WEB-INF/views/ex15/sub051.jsp로 포워드 
-	// 없으면 /WEB-INF/views/ex15/sub0.jsp로 포워드
+	// 없으면 /WEB-INF/views/ex15/sub05.jsp로 포워드
 	@RequestMapping("sub05")
 	public String method5(String name) {
 		if(name == null) {
