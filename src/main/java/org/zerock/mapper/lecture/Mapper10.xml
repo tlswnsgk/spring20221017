@@ -53,10 +53,24 @@ INSERT INTO Suppliers
 VALUES
 	(#{name}, #{contactName}, #{address}, #{city}, #{postalCode}, #{country})
 	</insert>
+	
+	
+	<!-- 키 프로퍼트 명으로 제너레이트 키를 가져옴 -->
+	<insert id="insertCustomerAndGetKey" useGeneratedKeys="true" keyProperty="id">
+	INSERT INTO Customers
+	(CustomerName, ContactName, Address, City, PostalCode, Country)
+	VALUES
+	(#{name}, #{contactName}, #{address}, #{city}, #{postalCode}, #{country})	
+	
+	</insert>
 
-
-
-
+	<insert id="insertSupplierAndGetKey" useGeneratedKeys="true" keyProperty="id">
+INSERT INTO Suppliers
+	(SupplierName,ContactName,Address,City,PostalCode,Country)
+VALUES
+	(#{name}, #{contactName}, #{address}, #{city}, #{postalCode}, #{country})
+	
+	</insert>
 
 
 

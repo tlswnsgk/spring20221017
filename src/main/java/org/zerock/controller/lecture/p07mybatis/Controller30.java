@@ -64,6 +64,12 @@ public class Controller30 {
 		System.out.println(prod.getName());
 		System.out.println(prod.getPrice());
 	}
+	@RequestMapping("sub06")
+	public void method6() {
+		JavaBean06 prod = mapper.getProduct();
+		System.out.println(prod.getName());
+		System.out.println(prod.getPrice());
+	}
 	
 	
 	}

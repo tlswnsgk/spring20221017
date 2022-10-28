@@ -14,7 +14,7 @@
 		FROM Orders o JOIN Employees e ON o.EmployeeID = e.EmployeeID
 		WHERE o.OrderId = 10248
 	</select>
-
+<!-- 자바 빈 안에 빈 넣기 -->
 	<select id="getOrder2" resultMap="orderMap">
 		SELECT
 		o.OrderID id,
@@ -25,7 +25,7 @@
 		FROM Orders o JOIN Employees e ON o.EmployeeID = e.EmployeeID
 		WHERE o.OrderId = 10248
 	</select>
-
+<!-- association : has one 관계 빈 안에 빈  -->
 	<resultMap type="org.zerock.domain.lecture.JavaBean08"	id="orderMap">
 		<result column="id" property="id" />
 		<result column="date" property="date" />

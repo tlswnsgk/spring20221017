@@ -13,6 +13,7 @@ FROM Categories c JOIN Products p ON c.CategoryID = p.CategoryID
 WHERE c.CategoryId = 7	
 	</select>
 	<!-- has many 관계 : collection  -->
+	<!-- List의 경우 collectuon을 주로 사용 -->
 	<resultMap type="org.zerock.domain.lecture.JavaBean11" id="categoryMap">
 		<id column="categoryId" property="id"/>
 		<result column="categoryName" property="name"/>
