@@ -2,7 +2,9 @@ package org.zerock.controller.lecture.p09fetch;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -55,6 +57,7 @@ public class Controller45 {
 	@GetMapping("sub05")
 	public ResponseEntity<String> method05() {
 		return ResponseEntity.ok()
+				.header("Content-Type", "text/plain;charset=UTF-8")
 				.body("헬로 월드");
 	}
 	
@@ -76,29 +79,30 @@ public class Controller45 {
 		
 		return ResponseEntity.ok(data);
 	}
+	
 	@GetMapping("sub08")
-	public ResponseEntity<JavaBean27> method08(){
+	public ResponseEntity<JavaBean27> method08() {
 		JavaBean27 data = new JavaBean27();
+		data.setName("박지성");
 		data.setDate(LocalDate.now());
 		data.setDateTime(LocalDateTime.now());
-		data.setName("신준하");
 		
 		return ResponseEntity.ok(data);
 	}
+	
 	@GetMapping("sub09")
-	public ResponseEntity<JavaBean25> method9(){
+	public ResponseEntity<JavaBean25> method09() {
 		JavaBean25 data = new JavaBean25();
 		JavaBean26 sub = new JavaBean26();
 		
-		sub.setAddress(List.of("서울","부산","제주"));
-		sub.setMarried(false);
+		sub.setAddress(List.of("서울", "부산", "제주"));
+		sub.setMarried(true);
 		
-		data.setAge(30);
 		data.setInfo(sub);
+		data.setAge(99);
 		
 		return ResponseEntity.ok(data);
 	}
-	 
 	
 	@GetMapping("sub10")
 	@ResponseBody
@@ -116,23 +120,67 @@ public class Controller45 {
 	}
 	
 	// sub11 요청경로 
-		// JavaBean27 을 json 으로 변경한 응답하는 메소드 작성
-		// @ResponseBody 사용
-		@GetMapping("sub11")
-		@ResponseBody
-		public JavaBean27 method11() {
-			JavaBean27 data = new JavaBean27();
-			data.setName("박지성");
-			data.setDate(LocalDate.now());
-			data.setDateTime(LocalDateTime.now());
-			
-			return data;
-		}
-		@GetMapping("sub12")
-		@ResponseBody
-		public String method12() {
-			return "헬로 월드";
-		}
+	// JavaBean27 을 json 으로 변경한 응답하는 메소드 작성
+	// @ResponseBody 사용
+	@GetMapping("sub11")
+	@ResponseBody
+	public JavaBean27 method11() {
+		JavaBean27 data = new JavaBean27();
+		data.setName("박지성");
+		data.setDate(LocalDate.now());
+		data.setDateTime(LocalDateTime.now());
+		
+		return data;
+	}
+	
+	@GetMapping("sub12")
+	@ResponseBody
+	public String method12() {
+		return "헬로 월드";
+	}
+	@GetMapping("sub13")
+	@ResponseBody
+	public Map<String,String>method13(){
+		Map<String,String> map = new HashMap<>();
+		map.put("address", "서울");
+		map.put("email", "abc@nasd.com");
+		map.put("age", "33");
+		
+		return map;
+	}
+	@GetMapping("sub14")
+	@ResponseBody
+	public Map<String, Object> method14() {
+		Map<String, Object> map = new HashMap<>();
+		JavaBean25 data = new JavaBean25();
+		JavaBean26 sub = new JavaBean26();
+		
+		sub.setAddress(List.of("제주", "울릉도"));
+		sub.setMarried(false);
+		
+		data.setAge(99);
+		data.setInfo(sub);
+		
+		map.put("address", "부산");
+		map.put("age", 33);
+		map.put("married", true);
+		map.put("data", data);
+		
+		return map;
+	}
+	@GetMapping("sub15")
+	@ResponseBody
+	public Map<String,Object> method15(){
+		Map<String,Object> map = new HashMap<>();
+		map.put("car", "tesla");
+		map.put("model", "avante");
+		map.put("color", List.of("blue","red"));
+		
+		return map;
+	}
+	
+	
+	
 	
 }
 
