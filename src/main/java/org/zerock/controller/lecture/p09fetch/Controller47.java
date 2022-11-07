@@ -102,29 +102,27 @@ public class Controller47 {
 	
 	@PutMapping("sub10")
 	@ResponseBody
-	public Map<String, String> method10(@RequestBody JavaBean18 customer) {
-		Map<String, String> map = new HashMap<>();
+	public Map<String,String> method10(@RequestBody JavaBean18 customer){
+		Map<String,String> map = new HashMap<>();
 		int cnt = mapper.updateCustomer(customer);
-		if (cnt == 1) {
-			map.put("message", customer.getId() + "번 고객정보가 변경되었습니다.");
-		} else {
-			map.put("message", customer.getId() + "번 고객정보가 변경되지 않았습니다.");
+		if(cnt ==1) {
+			map.put("message", customer.getId()+"번 고객정보가 변경되었습니다");
+		}else {
+			map.put("message", customer.getId()+"번 고객정보가 변경되지 않았습니다");
 		}
-		
 		return map;
 	}
 	
 	@PutMapping("sub11")
 	@ResponseBody
-	public Map<String, String> method10(@RequestBody JavaBean19 supplier) {
-		Map<String, String> map = new HashMap<>();
+	public Map<String,String> method11(@RequestBody JavaBean19 supplier){
+		Map<String,String> map = new HashMap<>();
 		int cnt = mapper.updateSupplier(supplier);
-		if (cnt == 1) {
-			map.put("message", supplier.getId() + "번 공급자정보가 변경되었습니다.");
-		} else {
-			map.put("message", supplier.getId() + "번 공급자정보가 변경되지 않았습니다.");
+		if(cnt == 1) {
+			map.put("message",supplier.getId()+ "번 공급자정보가 변경되었습니다");
+		}else {
+			map.put("message", supplier.getId()+"번 공급자정보가 변경되지 않았습니다");
 		}
-		
 		return map;
 	}
 	

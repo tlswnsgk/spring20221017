@@ -145,7 +145,7 @@ document.querySelector("#btn12").addEventListener("click", function() {
 	});
 });
 
-document.querySelector("#btn11").addEventListener("click", function() {
+document.querySelector("#btn11").addEventListener("click",function(){
 	const id = document.querySelector("#supplierIdInput11").value;
 	const name = document.querySelector("#supplierNameInput11").value;
 	const contactName = document.querySelector("#supplierContactNameInput11").value;
@@ -156,41 +156,41 @@ document.querySelector("#btn11").addEventListener("click", function() {
 	const city = document.querySelector("#supplierCityInput11").value;
 	
 	const data = {id, name, contactName, address, postalCode, country, phone, city};
-	fetch(ctx + "/ex47/sub11", {
+	fetch(ctx+"/ex47/sub11",{
 		method : "put",
 		headers : {
 			"Content-Type" : "application/json"
 		},
-		body : JSON.stringify(data)
+		body:JSON.stringify(data)
 	})
-	.then(res => res.json())
-	.then(data => {
-		document.querySelector("#messageDiv").innerText = data.message;
-	});
-});
+	.then(res=>res.json())
+	.then(data=>{
+		document.querySelector("#messageDiv").innerText=data.message;
+	})
+})
 
-document.querySelector("#btn10").addEventListener("click", function() {
+document.querySelector("#btn10").addEventListener("click",function(){
 	const data = {
-		id : 1,
-		name : "박지성",
-		contactName : "park",
-		address : "london",
-		city : "london",
-		postalCode : "33333",
-		country : "korea"
-	};
-	fetch(ctx + "/ex47/sub10", {
-		method : "put",
+			id : 1,
+			name : "박지성",
+			contactName : "park",
+			address : "london",
+			city : "london",
+			postalCode : "33333",
+			country : "korea"
+	}
+	fetch(ctx+"/ex47/sub10",{
+		method: "put",
 		headers : {
 			"Content-Type" : "application/json"
 		},
-		body : JSON.stringify(data)
+		body:JSON.stringify(data)
 	})
-	.then(res => res.json())
-	.then(data => {
+	.then(res=>res.json())
+	.then(data=>{
 		document.querySelector("#messageDiv").innerText = data.message;
-	});
-});
+	})
+})
 
 document.querySelector("#btn9").addEventListener("click", function() {
 	// 데이터 지우기
