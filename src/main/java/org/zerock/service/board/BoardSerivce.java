@@ -1,7 +1,6 @@
 package org.zerock.service.board;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,31 +22,31 @@ public class BoardSerivce {
 	private ReplyMapper replyMapper;
 	
 	@Transactional
-	public int register(BoardDto board, MultipartFile file) {
+	public int register(BoardDto board, MultipartFile[] files) {
 		// db에 게시물 정보 저장
 		int cnt = boardMapper.insert(board);
 		
-		if (file != null && file.getSize() > 0) {
-			// db에 파일 정보 저장
-			boardMapper.insertFile(board.getId(), file.getOriginalFilename());
-			
-			// 파일 저장
-			// board id 이름의 새폴더 만들기
-			File folder = new File("C:\\Users\\user\\Desktop\\study\\upload\\prj1\\board\\"+board.getId());
-			folder.mkdirs();
-			
-			File dest = new File(folder,file.getOriginalFilename());
-			
-			try {
-				file.transferTo(dest);
-			} catch (IOException e) {
-				// @Transactional은 RuntimeException에서만 rollback됨
-				e.printStackTrace();
-				throw new RuntimeException(e);
+		for (MultipartFile file : files) {
+			if (file != null && file.getSize() > 0) {
+				// db에 파일 정보 저장
+				boardMapper.insertFile(board.getId(), file.getOriginalFilename());
+				
+				// 파일 저장
+				// board id 이름의 새폴더 만들기
+				File folder = new File("C:\\Users\\user\\Desktop\\study\\upload\\prj1\\board\\" + board.getId());
+				folder.mkdirs();
+				
+				File dest = new File(folder, file.getOriginalFilename());
+				
+				try {
+					file.transferTo(dest);
+				} catch (Exception e) {
+					// @Transactional은 RuntimeException에서만 rollback 됨
+					e.printStackTrace();
+					throw new RuntimeException(e);
+				}
 			}
 		}
-		
-		
 		
 		return cnt;
 	}
