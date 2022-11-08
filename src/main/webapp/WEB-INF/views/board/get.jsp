@@ -120,7 +120,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-	        <button type="button" data-bs-dismiss="modal" id="modifyFormModalSubmitButton" class="btn btn-danger">수정</button>
+	        <button type="button" data-bs-dismiss="modal" id="modifyFormModalSubmitButton" class="btn btn-primary">수정</button>
 	      </div>
 	    </div>
 	  </div>
@@ -132,6 +132,23 @@ const ctx = "${pageContext.request.contextPath}";
 
 listReply();
 
+document.querySelector("#modifyFormModalSubmitButton").addEventListener("click", function() {
+	const content = document.querySelector("#modifyReplyInput").value;
+	const id = this.dataset.replyId;
+	const data = {id, content};
+	
+	fetch(`\${ctx}/reply/modify`, {
+		method : "put",
+		headers : {
+			"Content-Type" : "application/json"
+		},
+		body : JSON.stringify(data)
+	})
+	.then(res => res.json())
+	.then(data => document.querySelector("#replyMessage1").innerText = data.message)
+	.then(() => listReply());
+});
+
 document.querySelector("#removeConfirmModalSubmitButton").addEventListener("click", function() {
 	removeReply(this.dataset.replyId);
 });
@@ -139,7 +156,9 @@ document.querySelector("#removeConfirmModalSubmitButton").addEventListener("clic
 function readReplyAndSetModalForm(id) {
 	fetch(`\${ctx}/reply/get/\${id}`)
 	.then(res => res.json())
-	.then(reply => console.log(reply));
+	.then(reply => {
+		document.querySelector("#modifyReplyInput").value = reply.content;
+	});
 }
 
 function listReply() {
@@ -165,6 +184,7 @@ function listReply() {
 			// 수정 폼 모달에 댓글 내용 넣기
 			document.querySelector("#" + modifyReplyButtonId)
 				.addEventListener("click", function() {
+					document.querySelector("#modifyFormModalSubmitButton").setAttribute("data-reply-id", this.dataset.replyId);
 					readReplyAndSetModalForm(this.dataset.replyId);
 				});
 			
