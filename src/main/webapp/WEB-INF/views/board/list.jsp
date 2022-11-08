@@ -46,9 +46,16 @@
 									<a href="${getLink }">
 										${board.title }
 									</a>
+									
+									<c:if test="${board.countReply > 0 }">
+										<span class="badge rounded-pill text-bg-light">
+											<i class="fa-regular fa-comment-dots"></i>
+											${board.countReply }
+										</span>
+									</c:if>
 								</td>
 								<td>${board.writer }</td>
-								<td>${board.inserted }</td>
+								<td>${board.ago }</td>
 							</tr>
 						</c:forEach> 
 					</tbody>
