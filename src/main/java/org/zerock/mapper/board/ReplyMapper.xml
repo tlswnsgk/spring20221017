@@ -7,9 +7,9 @@
 
 	<delete id="deleteByBoardId">
 	DELETE FROM Reply
-	WHERE boardId=#{id}
+	WHERE boardId = #{id}
 	</delete>
-	
+
 	<update id="update">
 	UPDATE Reply
 	SET
@@ -18,11 +18,6 @@
 		id = #{id}
 	</update>
 
-	<delete id="deleteById">
-	DELETE FROM Reply
-	WHERE id = #{id}
-	</delete>
-	
 	<select id="selectById" resultType="org.zerock.domain.board.ReplyDto">
 	SELECT
 		id,
@@ -35,6 +30,11 @@
 		id = #{id}
 		
 	</select>
+
+	<delete id="deleteById">
+	DELETE FROM Reply
+	WHERE id = #{id}
+	</delete>
 
 	<select id="selectReplyByBoardId" resultType="org.zerock.domain.board.ReplyDto">
 	SELECT 

@@ -19,3 +19,10 @@ public interface ReplyMapper {
 	int deleteByBoardId(int id);
 
 }
+
+
+
+
+
+
+
