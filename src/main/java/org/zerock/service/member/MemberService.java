@@ -9,17 +9,24 @@ import org.zerock.mapper.member.MemberMapper;
 
 @Service
 public class MemberService {
+	
 	@Autowired
 	private MemberMapper mapper;
-	
+
 	public int insert(MemberDto member) {
-	
+		
 		return mapper.insert(member);
 	}
 
 	public List<MemberDto> list() {
-		
+		// TODO Auto-generated method stub
 		return mapper.selectAll();
 	}
 
 }
+
+
+
+
+
+
